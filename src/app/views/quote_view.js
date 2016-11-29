@@ -17,7 +17,40 @@ const QuoteView = Backbone.View.extend({
     // this.$el.html('<p>Hello World</p>');
 
     return this;
-  }
+  },
+
+  ////////////// ADDING EVENTS //////////////
+  events: {
+    'click .btn-buy': 'buyStock',
+    'click .btn-sell': 'sellStock'
+  },
+
+  buyStock: function(event) {
+    console.log('buyStock called');
+    // Suppress that behavior.
+    event.preventDefault();
+
+    // Add $1 to the price of the stock
+    this.stock.price = this.stock.price + 1;
+
+    // Re-render the quote
+    this.render();
+  },
+
+  sellStock: function(event) {
+    console.log('sellStock called');
+    // Suppress that behavior.
+    event.preventDefault();
+
+    // Add $1 to the price of the stock
+    this.stock.price = this.stock.price - 1;
+
+    // Re-render the quote
+    this.render();
+  },
+
+  //////////////////////////////////////////
+
 });
 
 export default QuoteView;
